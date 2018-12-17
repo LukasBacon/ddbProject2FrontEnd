@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 2%;
+}
+
+.listview{
+  position: relative;
+  height: 300px;
+  float: left;
+  width: 30%;
+  margin: 1%;
+}
+
+.listview ul {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: scroll;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  -webkit-overflow-scrolling: touch;
+}
+
+.listview ul li:hover  {
+  background: #e0e0e0;
+}
+
+.listview ul li a{
+  display: block;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+  text-decoration: none;
+  color: black;
+}
+
+.highlight{
+    background: #9b9b9b;
+}
