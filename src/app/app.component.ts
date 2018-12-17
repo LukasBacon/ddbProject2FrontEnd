@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { PreferencesService } from './preferences.service';
 import { Vyucujuci} from './entities/vyucujuci';
 import { Technologia } from './entities/technologia'
-import { TematickyOkruh } from './entities/tematicky_okruh'
+import { TematickyOkruh } from './entities/tematicky-okruh'
 
 @Component({
   selector: 'app-root',

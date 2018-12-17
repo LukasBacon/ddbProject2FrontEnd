@@ -4,7 +4,7 @@ import { Observable, of} from 'rxjs';
 import { map, catchError, tap} from 'rxjs/operators';
 import { Vyucujuci } from './entities/vyucujuci'
 import { Technologia } from './entities/technologia'
-import { TematickyOkruh } from './entities/tematicky_okruh'
+import { TematickyOkruh } from './entities/tematicky-okruh'
 
 @Injectable({
   providedIn: 'root'
