@@ -6,47 +6,94 @@
   </h1>
 
   <!-- preferences-->
-  <div>
+  <div class="myRow">
+    <h3 class="prefInfo">LLLL</h3>
+    <h3 class="prefInfo">LLLL</h3>
+    <h3 class="prefInfo">LLLL</h3>
+  </div>
 
-    <div class="listview">
+  <div class="myRow">
+    <div class="listview preferencesListview">
       <ul>
-        <li (click)="vyuc.selected=!vyuc.selected" 
+        <li (click)="vyuc.selected=!vyuc.selected"
             *ngFor="let vyuc of vyucujuci">
           <a href="#" [class.highlight]="vyuc.selected">{{vyuc.meno}}</a>
         </li>
       </ul>
     </div>
-
-    <div class="listview">
+    <div class="listview preferencesListview">
       <ul>
-        <li (click)="technologia.selected=!technologia.selected" 
+        <li (click)="technologia.selected=!technologia.selected"
             *ngFor="let technologia of technologie">
           <a href="#" [class.highlight]="technologia.selected"> {{technologia.nazov}} </a>
         </li>
       </ul>
     </div>
-
-    <div class="listview">
+    <div class="listview preferencesListview">
       <ul>
-        <li (click)="tematickyOkruh.selected=!tematickyOkruh.selected" 
+        <li (click)="tematickyOkruh.selected=!tematickyOkruh.selected"
             *ngFor="let tematickyOkruh of tematickeOkruhy">
           <a href="#" [class.highlight]="tematickyOkruh.selected"> {{tematickyOkruh.nazov}} </a>
         </li>
       </ul>
     </div>
+  </div>
 
+  <div class="myRow">
+    <h3 class="prefInfo">LLLL</h3>
+    <h3 class="prefInfo">LLLL</h3>
+    <h3 class="prefInfo">LLLL</h3>
+  </div>
+
+  <div class="myRow">
+    <div class="numberSelect">
+      <input type="number" min="0" max="10" value="{{celkoveHodnotenie}}" (input)="celkoveHodnotenie = +$event.target.value">
+    </div>
+    <div class="numberSelect">
+      <input type="number" min="0" max="10" value="{{narocnost}}" (input)="narocnost = +$event.target.value">
+    </div>
+    <div class="numberSelect">
+      <input type="number" min="0" max="10" value="{{zaujimavost}}" (input)="zaujimavost = +$event.target.value">
+    </div>
+  </div>
+
+  <div class="myRow" style="text-align:center">
+    <button type="button" (click)="filter()">Vyfiltruj</button>
   </div>
 
   <!--result -->
-  <div>
-    
+  <div class="myRow">
+    <div class="tableDiv">
+      <table cellspacing="0" cellpadding="1" border="0" width="100%">
+        <thead>
+          <tr style="color:white;background-color:grey">
+           <th>Kod</th>
+           <th>Nazov</th>
+           <th>Typ</th>
+           <th>Kredit</th>
+           <th>Celkove hodnotenie</th>
+           <th>Narocnost</th>
+           <th>Zaujimavost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let predmet of predmetyFiltred">
+            <td>{{predmet.kod}}</td>
+            <td>{{predmet.nazov}}</td>
+            <td>{{predmet.typ}}</td>
+            <td>{{predmet.kredit}}</td>
+            <td>{{predmet.celkoveHodnotenie}}</td>
+            <td>{{predmet.narocnost}}</td>
+            <td>{{predmet.zaujimavost}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!-- chosen subjects -->
   <div>
-    
+
   </div>
 
-
 </div>
-

@@ -4,17 +4,44 @@
 
 body {
   padding: 2%;
+  font-size: 16px;
 }
 
-.listview{
+.myRow{
+  display: block;
+  float: none;
+  width: 100%;
+}
+
+.myRow h3{
+   margin: 25px 1% 0px 1%;
+}
+
+.myRow button{
+  margin-left: 1%;
+  margin-top: 10px;
+  padding: 20px;
+}
+
+.prefInfo{
   position: relative;
-  height: 300px;
   float: left;
   width: 30%;
   margin: 1%;
 }
 
-.listview ul {
+.listview {
+  position: relative;
+  height: 300px;
+  float: left;
+  margin: 1%;
+}
+
+.preferencesListview{
+  width: 30%;
+}
+
+.listview ul{
   position: absolute;
   top: 0px;
   bottom: 0px;
@@ -24,7 +51,6 @@ body {
   margin: 0;
   padding: 0;
   border: 2px solid #ccc;
-  font-size: 16px;
   font-family: Arial, sans-serif;
   -webkit-overflow-scrolling: touch;
 }
@@ -43,4 +69,36 @@ body {
 
 .highlight{
     background: #9b9b9b;
+}
+
+.numberSelect{
+  position: relative;
+  width: 30%;
+  float: left;
+  margin: 1%;
+}
+
+.numberSelect input{
+  width: 100%;
+}
+
+.tableDiv{
+  height: 300px;
+  overflow: auto;
+  border: 2px solid #ccc;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.table{
+  table-layout: fixed;
+  text-align: center;
+}
+
+td, th{
+  padding: 10px 5px;
+  border-bottom: 1px solid #ccc;
+  text-decoration: none;
+  color: black;
+  text-align: center;
 }
