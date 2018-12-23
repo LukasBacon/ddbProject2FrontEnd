@@ -1,4 +1,4 @@
-<div>
+<div style="padding: 10px;">
 
   <!-- title -->
   <h1 style="text-align:center">
@@ -7,9 +7,9 @@
 
   <!-- preferences-->
   <div class="myRow">
-    <h3 class="prefInfo">LLLL</h3>
-    <h3 class="prefInfo">LLLL</h3>
-    <h3 class="prefInfo">LLLL</h3>
+    <h3 class="prefInfo">Vyberte vyučujúcich, ktorých nechcete:</h3>
+    <h3 class="prefInfo">Vyberte technológie, ktoré chcete:</h3>
+    <h3 class="prefInfo">Vyberte tématické okruhy, ktoré chcete:</h3>
   </div>
 
   <div class="myRow">
@@ -40,9 +40,9 @@
   </div>
 
   <div class="myRow">
-    <h3 class="prefInfo">LLLL</h3>
-    <h3 class="prefInfo">LLLL</h3>
-    <h3 class="prefInfo">LLLL</h3>
+    <h3 class="prefInfo">Zvoľte minmálne hodnotenie <0, 10>:</h3>
+    <h3 class="prefInfo">Zvoľte maximálnu náročnosť <0, 10>:</h3>
+    <h3 class="prefInfo">Zvoľte minimálnú zaujimavosť <0, 10>:</h3>
   </div>
 
   <div class="myRow">
@@ -58,10 +58,48 @@
   </div>
 
   <div class="myRow" style="text-align:center">
-    <button type="button" (click)="filter()">Vyfiltruj</button>
-  </div>
+    <button type="button" class="myBtn" (click)="filter()">Vyfiltruj</button>
+  </div><br/>
 
   <!--result -->
+  <div class="myRow">
+    <div class="tableDiv">
+      <table cellspacing="0" cellpadding="1" border="0" width="100%">
+        <thead>
+          <tr style="color:white;background-color:grey">
+           <th>Kód</th>
+           <th>Názov</th>
+           <th>Typ</th>
+           <th>Kredit</th>
+           <th>Celkové hodnotenie</th>
+           <th>Náročnosť</th>
+           <th>Zaujimavosť</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr (click)="addPredmet(predmet)"
+              *ngFor="let predmet of predmetyFiltred"
+              class="predmetTr">
+            <td>{{predmet.kod}}</td>
+            <td>{{predmet.nazov}}</td>
+            <td>{{predmet.typ}}</td>
+            <td>{{predmet.kredit}}</td>
+            <td>{{predmet.celkoveHodnotenie}}</td>
+            <td>{{predmet.narocnost}}</td>
+            <td>{{predmet.zaujimavost}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="myRow">
+    <button type="button" class="myBtn" (click)="chooseAllA()">Vyber všetky A-čkové predmety</button>
+    <p style="float: right; margin-right: 5px;">Počet kreditov: <b>{{kreditSum(predmetyFiltred)}}</b></p>
+    <p style="float: right; margin-right: 10px;">Počet predmetov: <b>{{predmetyFiltred.length}}</b></p>
+  </div><br/>
+
+  <!-- chosen subjects -->
   <div class="myRow">
     <div class="tableDiv">
       <table cellspacing="0" cellpadding="1" border="0" width="100%">
@@ -77,7 +115,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let predmet of predmetyFiltred">
+          <tr (click)="removePredmet(predmet)"
+              *ngFor="let predmet of predmetySelected"
+              class="predmetTr">
             <td>{{predmet.kod}}</td>
             <td>{{predmet.nazov}}</td>
             <td>{{predmet.typ}}</td>
@@ -91,9 +131,16 @@
     </div>
   </div>
 
-  <!-- chosen subjects -->
-  <div>
+  <div class="myRow">
+    <button type="button" class="myBtn" (click)="clear()">Odstráň všetky</button>
+    <p style="float: right; margin-right: 5px;">Počet kreditov: <b>{{kreditSum(predmetySelected)}}</b></p>
+    <p style="float: right; margin-right: 10px;">Počet predmetov: <b>{{predmetySelected.length}}</b></p>
+  </div>
 
+  <div class="myRow" style="text-align:center; margin-top: 10px;">
+    <img src="{{getImagePath()}}" alt="{{getMessage()}}" width="50" height="50">
   </div>
 
 </div>
+
+<div class="footer"></div>
