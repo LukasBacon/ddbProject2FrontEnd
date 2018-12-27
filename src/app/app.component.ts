@@ -72,9 +72,9 @@ export class AppComponent {
 
   public getImagePath() : String{
     if (this.ok){
-      return "/assets/ok.png";
+      return "assets/ok.png";
     }
-    return "/assets/notok.png";
+    return "assets/notok.png";
   }
 
   public addPredmet(predmet : Predmet) {
