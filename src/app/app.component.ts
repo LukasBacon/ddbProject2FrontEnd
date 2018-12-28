@@ -12,6 +12,9 @@ import { Predmet } from './entities/predmet';
   styleUrls: ['./app.component.css']
 })
 
+/**
+* Hlavny controller aplikacie.
+*/
 export class AppComponent {
   public title = 'Odporúčač predmetov pre AIN';
   public vyucujuci : Vyucujuci[] = [];
@@ -28,7 +31,9 @@ export class AppComponent {
 
   constructor(private preferencesService : PreferencesService,
               private clingoService : ClingoService) { }
-
+  /**
+  * NAcitanie dat pri inicializacii triedy.
+  */
   ngOnInit(){
   	this.preferencesService.getVyucujuci()
   			.subscribe((data : Vyucujuci[]) => this.vyucujuci = data);
@@ -38,6 +43,9 @@ export class AppComponent {
   			.subscribe((data : TematickyOkruh[]) => this.tematickeOkruhy = data);
   }
 
+  /**
+  * Vyfiltruje a priradi predmety do this.predmetyFiltred podla zvolenych preferencii.
+  */
   public filter(){
     let vyucujuciSelected : number[] = this.filterSelected(this.vyucujuci);
     let technologieSelected : number[] = this.filterSelected(this.technologie);
@@ -53,6 +61,9 @@ export class AppComponent {
     ).subscribe((data : Predmet[]) => { this.predmetyFiltred = this.order(data); });
   }
 
+  /**
+  * Vrati pole idciek z pola objektov list, kde object ma selected true.
+  */
   private filterSelected(list) : number[]{
     let result : number[] = [];
     list.forEach(function(obj){
@@ -63,6 +74,9 @@ export class AppComponent {
     return result;
   }
 
+  /**
+  * Vrati spravu o kontrole zvolenych predmetov.
+  */
   public getMessage() : String {
     if (this.ok){
       return "OK";
@@ -70,6 +84,9 @@ export class AppComponent {
     return "Not OK";
   }
 
+  /**
+  * Vrati cestu k obrazku podla kontroly zvolenych predmetov.
+  */
   public getImagePath() : String{
     if (this.ok){
       return "assets/ok.png";
@@ -77,6 +94,9 @@ export class AppComponent {
     return "assets/notok.png";
   }
 
+  /**
+  * Premiestni predmety z filtrovanych do zvolenych.
+  */
   public addPredmet(predmet : Predmet) {
     const index = this.indexOfPredmet(this.predmetySelected, predmet);
     if (index <= -1) {
@@ -87,6 +107,9 @@ export class AppComponent {
     this.predmetyFiltred.splice(index2, 1);
   }
 
+  /**
+  * Odstrani predmet zo zvolenych.
+  */
   public removePredmet(predmet : Predmet) {
     const index = this.indexOfPredmet(this.predmetySelected, predmet);
     if (index > -1) {
@@ -95,6 +118,9 @@ export class AppComponent {
     }
   }
 
+  /**
+  * Do zvolenych predmetov premiestni vsetky A-ckove predmey z filtrovanych.
+  */
   public chooseAllA(){
     let predmetyToRemove : Predmet[] = [];
     for (let obj of this.predmetyFiltred){
@@ -115,11 +141,17 @@ export class AppComponent {
     this.check();
   }
 
+  /**
+  * Vycisti zvolene predmety.
+  */
   public clear(){
     this.predmetySelected = [];
     this.check();
   }
 
+  /**
+  * Vrati sucet kreditov zoznamu predmetov.
+  */
   public kreditSum(list : Predmet[]) : number {
     let result : number = 0;
     for (let predmet of list){

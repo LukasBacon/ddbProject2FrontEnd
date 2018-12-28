@@ -12,20 +12,32 @@ import { Settings } from './settings';
   providedIn: 'root'
 })
 
+/**
+* Trieda sa stara o komunikaciu s backendom ohladom preferencii, ktore treba ziskat z databazy.
+*/
 export class PreferencesService {
 
 	constructor(private http: HttpClient) { }
 
+  /**
+  * Ziska vsetkych vyucujucich.
+  */
   getVyucujuci() : Observable<Vyucujuci[]>{
   	return this.http.get<Vyucujuci[]>(Settings.backendUri + 'vyucujuci/all');
   }
 
+  /**
+  * Ziska vsetky technologie.
+  */
   getTechnologie() : Observable<Technologia[]>{
   	return this.http.get<Technologia[]>(Settings.backendUri + 'technologia/all');
   }
 
+  /**
+  * Ziska vsetky tematicke okruhy.
+  */
   getTematickeOkruhy() : Observable<TematickyOkruh[]>{
   	return this.http.get<TematickyOkruh[]>(Settings.backendUri + 'tematicky_okruh/all');
   }
-  
+
 }

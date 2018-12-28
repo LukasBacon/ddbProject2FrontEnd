@@ -7,11 +7,18 @@ import { Settings } from './settings';
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+* Sluzba, ktora sa stara o komunikaciu s backendom ohladom clingo funkcii.
+*/
 export class ClingoService {
 
   constructor(private http: HttpClient) { }
 
-  filter( vyucujuciSelected : number[],
+  /**
+  * Post metodov posle preferencie a ziska odpoved - predmety zodpovedajuce preferenciam.
+  */
+  public filter( vyucujuciSelected : number[],
           technologieSelected : number[],
           tematickeOkruhySelected : number[],
           celkoveHodnotenie : number,
@@ -24,7 +31,10 @@ export class ClingoService {
                                       Settings.jsonHttpOptions);
   }
 
-  check( predmetySelected : number[] ) : Observable<boolean> {
+  /**
+  * Post metodov posle idcka zvolenych predmetov a ziska odpoved - ci splnaju pravidla studijneho programu.
+  */
+  public check( predmetySelected : number[] ) : Observable<boolean> {
     return this.http.post<boolean>( Settings.backendUri + 'clingo/check',
                                     JSON.stringify(predmetySelected),
                                     Settings.jsonHttpOptions);
